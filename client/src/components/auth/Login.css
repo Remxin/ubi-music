@@ -1,0 +1,90 @@
+.login-form-bgc {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(to bottom, #000000 65%, #011e37 100%);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    left: calc(50% - 480px);
+    width: 960px;
+    padding-top: 75px;
+    height: 93vh;
+    
+}
+
+.login-form h2 {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 56px;
+    margin-bottom: 50px;
+    /* background: linear-gradient(to bottom right, #000000 16%, #002342 59%); */
+}
+
+.login-form label {
+    position: relative;
+    right: 300px;
+    margin-top: 30px;
+    /* background-color: blue; */
+    color: white;
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.login-form input {
+    width: 320px;
+    border-radius: 20px;
+    padding-left: 8px;
+    background: linear-gradient(to bottom right, #000000 0%, #002342 59%);
+    box-shadow: inset 0 0 2px white;
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+.login-form button {
+    position: relative;
+    right: calc(50% - 75px);
+    top: 40px;
+    width: 150px;
+    height: 50px;
+    background: linear-gradient(to bottom right, #000000 0%, #002342 59%);
+    border-radius: 25px;
+    box-shadow: inset 0 0 5px white;
+    font-size: 25px;
+    font-weight: bolder;
+    color: white;
+    cursor: pointer;
+}
+
+.login-form-bgc div {
+    position: relative;
+    left: calc(50% - 500px);
+}
+
+.login-form-bgc .iphone {
+    border-radius: 0;
+    transform: scale(3);
+    top: 220px;
+    left: -70px;
+}
+
+.login-form-bgc .iphone-frame {
+    /* height: 200px; */
+    top: 200px;
+    transform: scale(4);
+    border-radius: 0;
+}
+
+.login-form-bgc .iphone-frame-content {
+    left: 48px;
+    top: 195px;
+    border-radius: 1px;
+    height: 74px;
+    width: 42px;
+    transform: scale(2.9);
+    box-shadow: none;
+}

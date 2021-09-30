@@ -1,0 +1,43 @@
+.playlist-card {
+    position: relative;
+    left: 0px ;
+    width: 85%;
+    height: 35px;
+    margin: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: box-shadow .3s;
+}
+
+.now-playing {
+    background-color: #00225C;
+    box-shadow: 0 0 10px #00225C;
+}
+
+.playlist-card:hover {
+    box-shadow: 0 0 8px white;
+}
+
+.playlist-card .playlist-card-description {
+    position: relative;
+    left: 55px;
+    height: 50px;
+}
+
+.playlist-card .playlist-card-description h5 {
+    color: white;
+}
+
+.playlist-card .playlist-card-description h6 {
+    font-weight: 400;
+    color: #ccc;
+}
+
+.playlist-card img {
+    /* position: relative; */
+    top: 2px;
+    left: 7px;
+    height: 30px;
+    width: 40px;
+    border-radius: 2px;
+}

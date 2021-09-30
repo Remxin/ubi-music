@@ -1,0 +1,143 @@
+.music-page {
+    width: 100%;
+    height: 120vh;
+    padding-top: 50px;
+    background-color: rgb(17, 20, 53);
+    background: linear-gradient(to bottom, #000000 88%, #454042 100%);
+}
+
+.music-card {
+    display: block;
+    position: relative;
+    left: calc(50% - 225px);
+    width: 450px;
+    height: 500px;
+    border-radius: 40px;
+    padding-top: 10px;
+    background: black;
+    
+
+}
+
+.music-image {
+    display: block;
+    position: relative;
+    left: calc(50% - 201px);
+    width: 402px;
+    height: 278px;
+    box-shadow: 0 0 15px rgb(240, 240, 240);
+    border-radius: 30px;
+}
+
+.music-card audio {
+    position: relative;
+    top: 15px;
+    left: calc(50% - 200px);
+    width: 400px;
+    height: 300px;
+}
+
+#music-played {
+    margin-top: 0px;
+    height: 135px;
+    filter: sepia(0%) saturate(10%) grayscale(1) contrast(100%) invert(100%); 
+}
+
+#music-played::-webkit-media-controls-panel {
+    position: absolute;
+    background-color: white;
+    height: 140px;
+    width: 100%;
+    top: 0px;
+    right: -10px;
+    padding-left: 50px;
+    padding-bottom: 50px;
+}
+
+#music-played::-webkit-media-controls-play-button {
+    position: absolute;
+    top: 90px;
+    left: calc(50%);
+    width: 0px;
+    transform: scale(1.7);
+}
+
+.music-info {
+    position: relative;
+    top: 25px;
+    text-align: center;
+    z-index: 2;
+}
+.music-card h3 {
+    color: white;
+}
+
+.music-card h4 {
+    color: #ccc;
+    font-weight: 400;
+}
+
+.playlist-cards {
+    position: relative;
+    left: 10px;
+    overflow-y: scroll;
+    height: 180px;
+    width: 450px;
+    /* background-color: red; */
+}
+
+.playlist-cards::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* .playlist-cards::-webkit-scrollbar-track {
+    width: 1px;
+    /* background-color: green; 
+} */
+
+.playlist-cards::-webkit-scrollbar-thumb {
+    position: absolute;
+    width: 10px;
+    height: 5px;
+    background-color: #fff;
+}
+
+.next-music {
+    position: relative;
+    left: 350px;
+    top: 130px;
+    height: 20px;
+    width: 20px;
+    padding-top: 0.8px;
+    padding-left: 2.2px;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: scale(2.2);
+    z-index: 3;
+    transition: .3s background-color;
+}
+
+.next-music:hover {
+    background-color: #111;
+}
+
+.previous-music {
+    position: relative;
+    top: 152.5px;
+    left: 75px;
+    height: 20px;
+    width: 20px;
+    padding-top: 0.8px;
+    padding-left: 2.2px;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 3;
+    transform: scale(2.2);
+    transition: .3s background-color;
+}
+
+.previous-music:hover {
+    background-color: #111;
+}
