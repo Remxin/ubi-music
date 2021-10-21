@@ -2,6 +2,19 @@ import React from 'react'
 import './Login.css';
 
 const Login = () => {
+    let i = 0;
+    const changePhoneContent = () => {
+        const interval = setInterval(() => {
+            if (i > 2) {
+                i = 0
+            }
+            let image = `/images/additional-img/page-mobile-design${i}.png`;
+            document.querySelector(".iphone-frame-content").src = image;
+            i++;
+        }, 4000)
+    }
+
+    changePhoneContent()
     return (
         <div className="login-form-bgc">
             <div>
@@ -10,13 +23,13 @@ const Login = () => {
                 <img src="/images/additional-img/page-mobile-design0.png" alt="page-design" className="iphone-frame-content"></img>
             </div>
 
-        <form className="login-form">
-            <h2>Login</h2>
-            <label>Login: <input type="text" placeholder="login"></input></label>
-            <label>Password: <input type="password" placeholder="password"></input></label>
-            <label>e-mail: <input type="email" placeholder="e-mail"></input></label>
-            <button>Log in</button>
-        </form>
+            <form className="login-form">
+                <h2>Login</h2>
+                <label>Login: <input type="text" placeholder="login"></input></label>
+                <label>Password: <input type="password" placeholder="password"></input></label>
+                <button>Log in</button>
+                <p className="link"><a href="/signup">Do not have an account?</a></p>
+            </form>
         </div>
     )
 }

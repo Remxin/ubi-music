@@ -5,7 +5,8 @@ import io from 'socket.io-client';
 let socket;
 
 const Home = () => {
-    const ENDPT = '192.168.1.28:5000';
+    const ENDPT = process.env.REACT_APP_SERVER_IP;
+    console.log(ENDPT)
     const [allSongs, setAllSongs] = useState([])
     //initializing socket.io connection
     useEffect(() => {

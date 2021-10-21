@@ -8,7 +8,7 @@ import io from 'socket.io-client';
 let socket;
 
 const MusicPlay = (props) => {
-  const ENDPT = '192.168.1.28:5000';
+  const ENDPT = process.env.REACT_APP_SERVER_IP;
   const history = useHistory();
 
   const songInfo = props.location.state.music;

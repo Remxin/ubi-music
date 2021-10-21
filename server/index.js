@@ -3,16 +3,23 @@ const app = express();
 const http = require('http').createServer(app);
 const socketio = require('socket.io');
 const io = socketio(http);
+const dotenv = require('dotenv').config()
 
 app.use(express.json());
 
+// -------- importing routes ---------
+const authRoutes = require('./routes/authRoutes')
+
+// --------- connecting to database ---------
 const mongoose = require('mongoose');
 const mongodbUrl = 'mongodb://127.0.0.1:27017/musicApp';
-mongoose.connect(mongodbUrl, { useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log('mongoDB successfully connected')).catch(err => console.log(err));
+mongoose.connect(mongodbUrl, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('mongoDB successfully connected')).catch(err => console.log(err));
 const Song = require('./models/Song');
+const User = require('./models/User');
 
 const PORT = process.env.PORT || 5000;
 
+// -------- connecting to socketio --------
 io.on('connection', (socket) => {
     console.log('a user connected')
     Song.find().then(result => {
@@ -29,6 +36,9 @@ io.on('connection', (socket) => {
         }))
     })
 })
+
+// -------- using routes --------
+app.use(authRoutes)
 
 http.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);
