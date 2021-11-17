@@ -4,8 +4,21 @@ const http = require('http').createServer(app);
 const socketio = require('socket.io');
 const io = socketio(http);
 const dotenv = require('dotenv').config()
+const cookieParser = require('cookie-parser')
+const cors = require('cors')
 
+
+//-------- cors options --------
+var corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+    optionsSuccessStatus: 200 // For legacy browser support
+}
+
+// -------- app use --------
 app.use(express.json());
+app.use(cookieParser());
+app.use(cors(corsOptions))
 
 // -------- importing routes ---------
 const authRoutes = require('./routes/authRoutes')

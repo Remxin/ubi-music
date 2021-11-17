@@ -18,9 +18,10 @@ const userSchema = new mongoose.Schema({
         lowercase: true,
         unique: true,
         validate: [isEmail, "Enter a valid email address"]
-    }
+    },
 
-}, { timestamps: true })
+
+})
 
 
 userSchema.pre('save', async function (next) {  // wykona się przed zapisaniem do bazy danych

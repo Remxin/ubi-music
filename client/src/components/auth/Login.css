@@ -60,10 +60,10 @@
     cursor: pointer;
 }
 
-.login-form-bgc div {
+/* .login-form-bgc div {
     position: relative;
     left: calc(50% - 500px);
-}
+} */
 
 .login-form-bgc .iphone {
     border-radius: 0;
@@ -101,4 +101,14 @@
 .link a {
     color: white;
     text-decoration: none;
+}
+
+.sig-error {
+    position: relative;
+    /* font-size: 24px; */
+    right: 300px;
+    z-index: 10;
+    width: 300px;
+    font-weight: bolder;
+    color: red;
 }

@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "get-audio-duration": "^2.0.3",
     "jquery": "^3.6.0",
+    "json": "^11.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",

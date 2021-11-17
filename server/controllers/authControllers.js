@@ -2,6 +2,7 @@ const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv').config() // for using process.env variables
 
+const jwtAge = 5 * 24 * 60 * 60
 const alertErr = (err) => { // this errors will occure bcs of User model manually built function login
     let errors = { name: "", password: "", email: "" }
 
@@ -23,20 +24,25 @@ const alertErr = (err) => { // this errors will occure bcs of User model manuall
 }
 
 const createJWT = (id) => {
-    return jwt.sign({ id }, process.env.JTW_TOKEN, { expiresIn: 5 * 24 * 60 * 60 }) // jsonweb token expires in 5 days
+    console.log("im in")
+    return jwt.sign({ id: id }, process.env.JTW_TOKEN, { expiresIn: jwtAge + "s" }) // jsonweb token expires in 5 days
 }
 
 const signup = async (req, res) => {
-    const { name, email, password } = req.body
+    const { name, email, password } = req.body;
     try {
-        const user = await User.create({ name, email, password })
-        const jtwToken = createJWT(user._id)
-        res.cookie("jwt", jtwToken, { httpOnly: true, maxAge: 5 * 24 * 60 * 60 * 1000 }) // this time time is passed in milliseconds, so *1000
-        res.sendStatus(201).json({ user })
+        const user = await User.create({ name, email, password });
+        // const token = createJWT(user._id);
+        const token = jwt.sign({ id: user._id }, process.env.JWT_TOKEN, { expiresIn: jwtAge + "s" })
+        console.log(token)
+        res.cookie('jwt', token, { httpOnly: true, maxAge: jwtAge })
+        // res.sendStatus(201).json({ user })
+        res.status(201).json({ user })
 
-    } catch (err) {
-        let errors = alertErr(err)
-        res.sendStatus(400).json(errors)
+    } catch (error) {
+        let errors = alertErr(error);
+        // res.sendStatus(400).json({ errors })
+        res.status(400).json({ errors })
     }
 
 }
@@ -46,7 +52,7 @@ const login = async (req, res) => {
     try {
         const user = await User.login(email, password) //executing our created login function (located in User model), it'll throw err if something went wrong, so then catch will execute
         const token = createJWT(user._id)
-        res.cookie("jwt", process.env.JWT_TOKEN, { expiresIn: 5 * 24 * 60 * 60 })
+        res.cookie("jwt", process.env.JWT_TOKEN, { expiresIn: jwtAge * 1000 })
         res.sendStatus(201).json({ user })
     } catch (err) {
         let errors = alertErr(err)    // alert function will set errors
