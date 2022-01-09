@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { UserContext } from '../../UserContext';
+import { Redirect } from 'react-router-dom';
 import { useStateWithCallbackLazy } from 'use-state-with-callback'
 import './MusicPlay.css';
 import PlaylistElement from './playlistElement/PlaylistElement';
@@ -8,8 +10,16 @@ import io from 'socket.io-client';
 let socket;
 
 const MusicPlay = (props) => {
-  const ENDPT = process.env.REACT_APP_SERVER_IP;
+  const { user, setUser } = useContext(UserContext)
   const history = useHistory();
+
+
+
+  const ENDPT = process.env.REACT_APP_SERVER_IP;
+
+  // if (!!!props.location.state?.music) {
+  //   return <Redirect to="/" />
+  // }
 
   const songInfo = props.location.state.music;
   const image = "/images/" + songInfo.fullName + ".jpg";
@@ -86,7 +96,7 @@ const MusicPlay = (props) => {
       let isNotFirstSong = JSON.parse(sessionStorage.getItem('isNotFirstSong'));
       if (!isNotFirstSong) {
         let currentMusicIndex = truePlaylist.findIndex((element) => {
-          return element._id == songInfo._id
+          return element._id === songInfo._id
         });
 
         if (currentMusicIndex === -1) {
@@ -114,6 +124,11 @@ const MusicPlay = (props) => {
       sessionStorage.setItem('trueRapPlaylist', truePlaylist);
     }
   }, [truePlaylist])
+
+  if (!user) {
+    console.log(user)
+    // return <Redirect to="/login" />
+  }
 
   return (
     <div className="music-page" onLoad={() => document.getElementById('music-played').play()}>

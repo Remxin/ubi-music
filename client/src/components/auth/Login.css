@@ -106,6 +106,8 @@
 .sig-error {
     position: relative;
     /* font-size: 24px; */
+    /* background-color: #fff; */
+    height: 50px;
     right: 300px;
     z-index: 10;
     width: 300px;

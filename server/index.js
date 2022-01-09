@@ -10,7 +10,7 @@ const cors = require('cors')
 
 //-------- cors options --------
 var corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: true,
     credentials: true,
     optionsSuccessStatus: 200 // For legacy browser support
 }

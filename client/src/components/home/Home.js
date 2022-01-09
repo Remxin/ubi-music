@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { UserContext } from '../../UserContext';
 import MusicCard from './MusicCard';
 import './Home.css';
+import { Redirect } from "react-router-dom"
 import io from 'socket.io-client';
 let socket;
 
 const Home = () => {
+    const { user, setUser } = useContext(UserContext)
+
     const ENDPT = process.env.REACT_APP_SERVER_IP;
-    console.log(ENDPT)
     const [allSongs, setAllSongs] = useState([])
     //initializing socket.io connection
     useEffect(() => {
@@ -31,7 +34,7 @@ const Home = () => {
         if (music.type === 'pop') {
             popPlaylist = [...popPlaylist, music._id];
             return (
-                <MusicCard music={music} />
+                <MusicCard music={music} key={music._id} />
             )
         }
     })
@@ -72,7 +75,9 @@ const Home = () => {
     //setting session variable that will be used in MusicPlay.js
     sessionStorage.setItem('isNotFirstSong', false);
 
-
+    if (!user) {
+        return <Redirect to="/login" />
+    }
     return (
         <div className="background">
             <h2 className="music-section-title">Pop</h2>
